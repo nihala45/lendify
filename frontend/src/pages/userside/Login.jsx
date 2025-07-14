@@ -1,6 +1,53 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../api/api";
+import { AuthContext } from '../../context/AuthContext';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!email || !password) {
+      setError('Please fill in both email and password.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await api.post('account/user/login/', {
+        email,
+        password,
+      });
+
+      const data = res.data;
+      console.log(data, 'this is the data ');
+
+      login(data);
+
+      alert('Login successful!');
+      navigate('/');
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(
+        err.response?.data?.error ||
+        err.response?.data?.detail ||
+        'Something went wrong. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Purple Background */}
@@ -13,7 +60,6 @@ const Login = () => {
       {/* Right Side - Form */}
       <div className="flex-1 lg:w-2/3 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-16">
         <div className="max-w-md w-full space-y-8">
-          
           {/* Logo */}
           <div className="flex justify-center">
             <svg
@@ -41,7 +87,13 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="mt-8 space-y-6">
+          {error && (
+            <div className="bg-red-100 text-red-700 px-4 py-3 rounded">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
             <div className="space-y-4">
               {/* Email */}
               <div>
@@ -53,6 +105,8 @@ const Login = () => {
                   name="email"
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
                   placeholder="you@example.com"
                 />
@@ -68,6 +122,8 @@ const Login = () => {
                   name="password"
                   type="password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
                   placeholder="Enter your password"
                 />
@@ -88,9 +144,10 @@ const Login = () => {
             <div>
               <button
                 type="submit"
+                disabled={loading}
                 className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 transition-colors duration-300"
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </div>
           </form>

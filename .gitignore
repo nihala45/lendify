@@ -1,0 +1,14 @@
+
+*.env
+
+
+venv/
+ENV/
+env/
+
+*.pyc
+__pycache__/
+
+
+.vscode/
+.idea/

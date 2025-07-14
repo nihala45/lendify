@@ -1,9 +1,11 @@
+// src/pages/AdminLogin.jsx
+
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
 import { AuthContext } from '../../context/AuthContext';
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -24,20 +26,20 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await api.post('account/user/login/', {
+      const res = await api.post('adminside/login/', {
         email,
         password,
       });
 
       const data = res.data;
-      console.log(data, 'this is the data ');
+      console.log(data, 'Admin login data');
 
       login(data);
 
-      alert('Login successful!');
-      navigate('/');
+      alert('Admin Login successful!');
+      navigate('/admin'); // redirect to your admin dashboard route
     } catch (err) {
-      console.error('Login error:', err);
+      console.error('Admin Login error:', err);
       setError(
         err.response?.data?.error ||
         err.response?.data?.detail ||
@@ -53,7 +55,7 @@ const Login = () => {
       {/* Left Side - Purple Background */}
       <div className="hidden lg:flex w-1/3 bg-purple-700 items-center justify-center">
         <h2 className="text-4xl font-bold text-white px-8 text-center">
-          Welcome Back to Lender
+          Welcome Back, Admin!
         </h2>
       </div>
 
@@ -80,10 +82,10 @@ const Login = () => {
 
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-800">
-              Login to <span className="text-purple-700">Lender</span>
+              Admin Login to <span className="text-purple-700">Lendify</span>
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Enter your credentials to continue.
+              Enter your admin credentials to continue.
             </p>
           </div>
 
@@ -108,7 +110,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
-                  placeholder="you@example.com"
+                  placeholder="admin@example.com"
                 />
               </div>
 
@@ -125,19 +127,8 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
-                  placeholder="Enter your password"
+                  placeholder="Enter your admin password"
                 />
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="text-sm">
-                <a
-                  href="/register"
-                  className="font-medium text-purple-700 hover:text-purple-900 transition duration-300"
-                >
-                  Don’t have an account? Register
-                </a>
               </div>
             </div>
 
@@ -147,7 +138,7 @@ const Login = () => {
                 disabled={loading}
                 className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 transition-colors duration-300"
               >
-                {loading ? "Logging in..." : "Login"}
+                {loading ? "Logging in..." : "Admin Login"}
               </button>
             </div>
           </form>
@@ -157,4 +148,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

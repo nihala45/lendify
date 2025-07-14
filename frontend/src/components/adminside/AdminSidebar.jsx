@@ -11,6 +11,8 @@ const AdminSidebar = () => {
   const sidebarLinks = [
     { name: 'Dashboard', path: '/admin', icon: HomeIcon },
     { name: 'Manage Users', path: '/admin/manage-users', icon: UsersIcon },
+    { name: 'Manage Categories', path: '/admin/manage-categories', icon: UsersIcon },
+
   ];
 
   return (

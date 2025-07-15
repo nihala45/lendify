@@ -20,20 +20,39 @@ class CustomPageNumberPagination(PageNumberPagination):
     max_page_size = 100
 
 class AdminLoginView(APIView):
-    def post(self,request):
+    def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        user = authenticate(email=email,password = password)
+        print(email, password, 'heyyyyyyyyyyyy')
 
-        if user is not None and user.is_superuser:
+        try:
+            user = Users.objects.get(email=email)
+        except Users.DoesNotExist:
+            print("User does not exist")
+            return Response(
+                {'detail': 'Invalid credentials or not an admin'},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        print(user, "USERRRRRRRRRRRRRRRRRRRRRR")
+
+        if user.check_password(password) and user.is_superuser:
+            print('user is there')
             refresh = RefreshToken.for_user(user)
+            print(str(refresh), 'this is refresh token')
+            print(str(refresh.access_token), 'this is access token')
+            print(user.email, 'emailllll')
             return Response({
-                'refresh' : str(refresh),
-                'access' : str(refresh.access_token),
-                  'is_superuser': user.is_superuser
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+                'is_superuser': user.is_superuser,
+                'email': user.email,
             })
-        return Response({'detail' : 'Invalid credentials or not an admin '}, status=status.HTTP_401_UNAUTHORIZED)
 
+        return Response(
+            {'detail': 'Invalid credentials or not an admin'},
+            status=status.HTTP_401_UNAUTHORIZED
+        )
     
 
 class UserViewSet(

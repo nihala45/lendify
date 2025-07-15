@@ -13,6 +13,10 @@ const AdminSidebar = () => {
     { name: 'Manage Users', path: '/admin/manage-users', icon: UsersIcon },
     { name: 'Manage Categories', path: '/admin/manage-categories', icon: UsersIcon },
     { name: 'Manage Books', path: '/admin/manage-books', icon: UsersIcon },
+    { name: 'Manage Requests', path: '/admin/manage-requests', icon: UsersIcon },
+    
+
+
 
 
   ];

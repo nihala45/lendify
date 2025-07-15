@@ -1,5 +1,3 @@
-// src/pages/AdminLogin.jsx
-
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/api";
@@ -32,12 +30,12 @@ const AdminLogin = () => {
       });
 
       const data = res.data;
-      console.log(data, 'Admin login data');
+
 
       login(data);
 
       alert('Admin Login successful!');
-      navigate('/admin'); // change to your admin dashboard path
+      navigate('/admin'); 
     } catch (err) {
       console.error('Admin Login error:', err);
       setError(

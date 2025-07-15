@@ -1,19 +1,16 @@
 import React from 'react'
 import Navbar from '../../components/userside/Navbar'
-import Header from '../../components/userside/Header'
+import BookList from '../../components/userside/BookList'
 import Footer from '../../components/userside/Footer'
 
-
-const Home = () => {
+const UserBookList = () => {
   return (
     <div>
       <Navbar/>
-      <Header/>
-      
+      <BookList/>
       <Footer/>
-      
     </div>
   )
 }
 
-export default Home
+export default UserBookList

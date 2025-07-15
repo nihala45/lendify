@@ -46,24 +46,30 @@ const Registration = () => {
     setGlobalError("");
 
     try {
-      const response = await fetch(`${api.defaults.baseURL}account/user/register/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username.trim(),
-          email: email.trim().toLowerCase(),
-          phone: phone.trim(),
-          password,
-        }),
+      const response = await api.post("account/user/register/", {
+        username: username.trim(),
+        email: email.trim().toLowerCase(),
+        phone: phone.trim(),
+        password,
       });
 
-      const data = await response.json();
+      const data = response.data;
       console.log(data, "Registration response");
 
-      if (!response.ok) {
-        const newErrors = {};
+      setSuccessMessage(data.msg || "Registered successfully!");
+      const userId = data?.id || data?.user_id;
+      setTimeout(() => {
+        navigate(userId ? `/otp/${userId}` : "/otp");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+
+      let newErrors = {};
+      let message = "Registration failed.";
+
+      if (error.response) {
+        const data = error.response.data;
+
         if (data.email) {
           newErrors.email = data.email;
         }
@@ -71,24 +77,16 @@ const Registration = () => {
           newErrors.phone = data.phone;
         }
         if (data.msg) {
-          setGlobalError(data.msg);
+          message = data.msg;
         } else if (data.error) {
-          setGlobalError(data.error);
-        } else {
-          setGlobalError("Registration failed.");
+          message = data.error;
         }
-        setErrors(newErrors);
-        return;
+      } else {
+        message = "Something went wrong. Please try again later.";
       }
 
-      setSuccessMessage(data.msg || "Registered successfully!");
-      const userId = data?.id || data?.user_id;
-      setTimeout(() => {
-        navigate(userId ? `/otp/${userId}` : "/otp");
-      }, 2000);
-    } catch (err) {
-      console.log(err);
-      setGlobalError("Something went wrong. Please try again later.");
+      setErrors(newErrors);
+      setGlobalError(message);
     } finally {
       setLoading(false);
     }
@@ -96,7 +94,6 @@ const Registration = () => {
 
   return (
     <div className="min-h-screen flex">
-    
       <div className="hidden lg:flex w-1/3 bg-purple-700 items-center justify-center">
         <h2 className="text-4xl font-bold text-white px-8 text-center">
           Welcome to Lendify
@@ -105,7 +102,6 @@ const Registration = () => {
 
       <div className="flex-1 lg:w-2/3 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-16">
         <div className="max-w-xl w-full space-y-8">
-         
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-800">
               Create Your <span className="text-purple-700">Lendify</span> Account

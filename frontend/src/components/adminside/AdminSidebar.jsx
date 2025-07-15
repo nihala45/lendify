@@ -12,6 +12,8 @@ const AdminSidebar = () => {
     { name: 'Dashboard', path: '/admin', icon: HomeIcon },
     { name: 'Manage Users', path: '/admin/manage-users', icon: UsersIcon },
     { name: 'Manage Categories', path: '/admin/manage-categories', icon: UsersIcon },
+    { name: 'Manage Books', path: '/admin/manage-books', icon: UsersIcon },
+
 
   ];
 

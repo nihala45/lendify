@@ -9,6 +9,9 @@ import AdminDashboard from './pages/adminside/AdminDashboard';
 import ManageUsers from './pages/adminside/ManageUsers';
 import AdminLogin from './pages/adminside/AdminLogin';
 import ManageCategories from './pages/adminside/ManageCategories';
+import AddBook from './pages/adminside/AddBook';
+import ManageBooks from './pages/adminside/ManageBooks'
+import AdminBookDetailPage from './pages/adminside/AdminBookDetailPage';
 const App = () => {
   return (
     <div>
@@ -19,6 +22,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
        <Route path="/otp/:id" element={<OtpVerification />} />
        <Route path="/admin/login" element={<AdminLogin />} />
+       <Route path="/admin/bookdetail/:id" element={<AdminBookDetailPage />} />
+
 
 
        <Route
@@ -32,11 +37,14 @@ const App = () => {
         <Route index element={<AdminDashboard />} />
         <Route path="manage-users" element={<ManageUsers />} />
         <Route path="manage-categories" element={<ManageCategories />} />
+        <Route path="manage-books" element={<ManageBooks />} />
+
 
         
         
       </Route>
 
+      <Route path="/admin/add-book" element={<AddBook />} />
 
 
       </Routes>

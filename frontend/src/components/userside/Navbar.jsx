@@ -35,7 +35,7 @@ const Navbar = () => {
         </Link>
 
         <div className="flex gap-4 items-center">
-          {/* Always visible: Book List */}
+        
           <Link
             to="/user/book-list/"
             className="px-4 py-2 border border-purple-700 text-purple-700 rounded hover:bg-purple-700 hover:text-white transition duration-300"

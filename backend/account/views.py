@@ -48,8 +48,7 @@ class UserRegisterView(APIView):
         otp_secret = pyotp.random_base32()
         totp = pyotp.TOTP(otp_secret, interval=300)  
         otp = totp.now()
-        print(otp, 'heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee')
-
+        
         if existing_unverified:
             existing_unverified.username = username
             existing_unverified.phone = phone

@@ -23,25 +23,22 @@ class AdminLoginView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        print(email, password, 'heyyyyyyyyyyyy')
 
         try:
             user = Users.objects.get(email=email)
         except Users.DoesNotExist:
-            print("User does not exist")
+           
             return Response(
                 {'detail': 'Invalid credentials or not an admin'},
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
-        print(user, "USERRRRRRRRRRRRRRRRRRRRRR")
+        
 
         if user.check_password(password) and user.is_superuser:
-            print('user is there')
+           
             refresh = RefreshToken.for_user(user)
-            print(str(refresh), 'this is refresh token')
-            print(str(refresh.access_token), 'this is access token')
-            print(user.email, 'emailllll')
+            
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),

@@ -156,13 +156,13 @@ class AdminBorrowListView(APIView):
             book.available_copies -= 1
             book.times_read += 1
             borrow.delivered_date = timezone.now().date()
-            print(borrow.delivered_date ,'hey please add this')
+           
             book.save()
 
         elif new_status == "returned":
             book.available_copies += 1
             borrow.return_date = timezone.now().date()
-            print(borrow.return_date, 'add this return data')
+           
             book.save()
 
         
@@ -189,7 +189,7 @@ class UserBorrowListView(generics.ListAPIView):
         # Security check: ensure logged-in user matches the requested user_id
         if user != request.user:
             return Response({"detail": "Forbidden."}, status=status.HTTP_403_FORBIDDEN)
-        print(user, 'user is there')
+      
 
         borrows = Borrow.objects.filter(user=user).select_related('book')
         serializer = BorrowSerializer(borrows, many=True)

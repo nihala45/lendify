@@ -24,7 +24,7 @@ const AddBook = () => {
       const response = await api.get("/adminside/categories/");
       let data = response.data;
 
-      // In case your backend returns { results: [...] }
+      
       if (data.results) {
         data = data.results;
       }
@@ -86,7 +86,7 @@ const AddBook = () => {
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Add New Book</h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Title */}
+       
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Title <span className="text-red-500">*</span>
@@ -100,7 +100,7 @@ const AddBook = () => {
             />
           </div>
 
-          {/* Author */}
+    
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Author <span className="text-red-500">*</span>
@@ -114,7 +114,7 @@ const AddBook = () => {
             />
           </div>
 
-          {/* Category Dropdown */}
+    
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Genre <span className="text-red-500">*</span>
@@ -135,7 +135,7 @@ const AddBook = () => {
             </select>
           </div>
 
-          {/* Total Copies */}
+         
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Total Copies
@@ -149,7 +149,7 @@ const AddBook = () => {
             />
           </div>
 
-          {/* Image Upload */}
+        
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Book Image

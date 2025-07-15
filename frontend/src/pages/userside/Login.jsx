@@ -30,7 +30,7 @@ const Login = () => {
       });
 
       const data = res.data;
-      console.log(data, "user login data");
+    
 
       login(data);
 
@@ -51,17 +51,17 @@ const Login = () => {
   return (
     <>
       <div className="min-h-screen flex">
-        {/* Left Side - Purple Background */}
+    
         <div className="hidden lg:flex w-1/3 bg-purple-700 items-center justify-center">
           <h2 className="text-4xl font-bold text-white px-8 text-center">
             Welcome Back, Lendify
           </h2>
         </div>
 
-        {/* Right Side - Form */}
+     
         <div className="flex-1 lg:w-2/3 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-16">
           <div className="max-w-md w-full space-y-8">
-            {/* Logo */}
+     
             <div className="flex justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ const Login = () => {
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-6">
               <div className="space-y-4">
-                {/* Email */}
+       
                 <div>
                   <label
                     htmlFor="email"
@@ -116,7 +116,7 @@ const Login = () => {
                   />
                 </div>
 
-                {/* Password */}
+
                 <div>
                   <label
                     htmlFor="password"

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          {/* Brand & description */}
+        
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <svg
@@ -35,7 +35,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation links */}
+ 
           <div>
             <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
               Quick Links
@@ -76,7 +76,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact / Info */}
+        
           <div>
             <h3 className="text-sm font-semibold text-gray-800 uppercase mb-4">
               Get in Touch

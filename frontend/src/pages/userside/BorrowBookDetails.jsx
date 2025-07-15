@@ -14,7 +14,7 @@ const BorrowBookDetails = () => {
   useEffect(() => {
     const fetchBorrows = async () => {
       if (!user || !user.id) {
-        console.log("No user found in localStorage.");
+     
         setLoading(false);
         return;
       }
@@ -24,10 +24,10 @@ const BorrowBookDetails = () => {
           params: { user_id: user.id },
         });
         setBorrows(res.data);
-        console.log(res.data, 'hey this is the res.data')
+        
 
         for (let item of res.data) {
-          console.log("Fetching status for book id:", item.book_id);
+          
           await fetchBorrowStatus(item.book_id);
         }
       } catch (err) {

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const AdminMangeRequest = () => {
   const [borrows, setBorrows] = useState([]);
 
-  // Fetch borrow records on mount
+  
   useEffect(() => {
     fetchBorrows();
   }, []);

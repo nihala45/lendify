@@ -23,7 +23,6 @@ const BookList = () => {
   const fetchCategories = async () => {
     try {
       const res = await api.get('/books/books/genre/');
-      console.log('Categories API Response:', res.data);
       setCategories(res.data.results || []);
     } catch (error) {
       console.error(error);
@@ -44,7 +43,6 @@ const BookList = () => {
 
     try {
       const res = await api.get(url);
-      console.log('Books API Response:', res.data);
       setBooks(res.data.results || []);
       setPagination({
         count: res.data.count || 0,
@@ -91,7 +89,7 @@ const BookList = () => {
 
   return (
     <div className="py-10">
-      {/* Search bar */}
+      
       <div className="flex justify-center mb-8 px-4">
         <div className="relative w-full max-w-xl">
           <input
@@ -117,7 +115,7 @@ const BookList = () => {
         </div>
       </div>
 
-      {/* Category filters */}
+     
       <div className="w-full overflow-x-auto mb-6">
         <div className="flex justify-start sm:justify-center gap-4 sm:gap-8 px-4 sm:px-0 py-4">
           <button
@@ -157,7 +155,7 @@ const BookList = () => {
         </div>
       </div>
 
-      {/* Grid of cards */}
+  
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 px-4 sm:px-8 xl:px-40">
         {loading ? (
           <p className="text-center w-full col-span-full text-gray-500">
@@ -174,7 +172,7 @@ const BookList = () => {
         )}
       </div>
 
-      {/* Pagination */}
+   
       {totalPages > 1 && (
         <div className="flex justify-center mt-8 gap-2 flex-wrap">
           <button

@@ -14,7 +14,6 @@ urlpatterns = [
     path('books/genre/', BookGenreListViewset.as_view(), name='book-genre'),
     path('books/detail/<int:pk>/', BookDetailView.as_view(), name='book-genre'),
     path('borrow/status/<int:book_id>/', BorrowStatusView.as_view(), name='borrow-status'),
-     # Admin borrow list & update
     path('admin/borrow/list/', AdminBorrowListView.as_view(), name='admin-borrow-list'),
     path('admin/borrow/update/<int:pk>/', AdminBorrowListView.as_view(), name='admin-borrow-update'),
     path('borrow/user/', UserBorrowListView.as_view(), name='user-borrow-list'),

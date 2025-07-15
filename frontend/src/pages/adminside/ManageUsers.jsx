@@ -91,7 +91,7 @@ const ManageUsers = () => {
         User Management
       </h1>
 
-      {/* Search Box */}
+     
       <div className="max-w-md mx-auto mb-6">
         <input
           type="text"
@@ -149,7 +149,7 @@ const ManageUsers = () => {
         </table>
       </div>
 
-      {/* Pagination Controls */}
+  
       {count > itemsPerPage && (
         <div className="mt-6 flex justify-center items-center gap-2">
           <button

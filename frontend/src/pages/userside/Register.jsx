@@ -96,17 +96,16 @@ const Registration = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* left side */}
+    
       <div className="hidden lg:flex w-1/3 bg-purple-700 items-center justify-center">
         <h2 className="text-4xl font-bold text-white px-8 text-center">
           Welcome to Lendify
         </h2>
       </div>
 
-      {/* right side */}
       <div className="flex-1 lg:w-2/3 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-16">
         <div className="max-w-xl w-full space-y-8">
-          {/* heading */}
+         
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-gray-800">
               Create Your <span className="text-purple-700">Lendify</span> Account

@@ -31,7 +31,7 @@ const UserBorrowPage = () => {
       const res = await api.get('/borrow/user/');
       setBorrows(res.data);
 
-      // find the borrow record for THIS book
+    
       const record = res.data.find((b) => String(b.book_id) === String(id));
       setBookBorrowStatus(record);
     } catch (error) {

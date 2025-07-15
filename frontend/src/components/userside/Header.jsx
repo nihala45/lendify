@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div className="relative overflow-hidden bg-gray-900 w-full">
-      {/* Background image */}
+     
       <div
         className="absolute inset-0 bg-cover bg-center opacity-40"
         style={{
@@ -12,10 +12,8 @@ const Header = () => {
         }}
       ></div>
 
-      {/* Dark overlay */}
       <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
 
-      {/* Header content */}
       <div className="relative z-10 px-4 sm:px-8 py-16 sm:py-24 text-center">
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-white">
           Welcome to{" "}

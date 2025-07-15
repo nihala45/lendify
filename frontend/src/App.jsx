@@ -11,7 +11,6 @@ import AdminLogin from './pages/adminside/AdminLogin';
 import ManageCategories from './pages/adminside/ManageCategories';
 import AddBook from './pages/adminside/AddBook';
 import ManageBooks from './pages/adminside/ManageBooks'
-import AdminBookDetailPage from './pages/adminside/AdminBookDetailPage';
 import UserBookList from './pages/userside/UserBookList';
 import UserBorrowPage from './pages/userside/UserBorrowPage';
 import AdminManageRequest from './pages/adminside/AdminManageRequest';
@@ -26,7 +25,6 @@ const App = () => {
         <Route path="/login" element={<Login />} />
        <Route path="/otp/:id" element={<OtpVerification />} />
        <Route path="/admin/login" element={<AdminLogin />} />
-       <Route path="/admin/book-detail/:id" element={<AdminBookDetailPage />} />
        <Route path="/user/book-list/" element={<UserBookList />} />
        <Route path="/user/book-detail/:id" element={<DetailBook />} />
        

@@ -40,7 +40,7 @@ const AdminDashboard = () => {
       name: 'Total Users',
       value: counts.totalUsers,
       icon: UsersIcon,
-      color: 'bg-blue-600',
+      color: 'bg-purple-500',
     },
     {
       name: 'Total Blogs',
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
       name: 'Categories',
       value: counts.totalCategories,
       icon: FolderIcon,
-      color: 'bg-yellow-600',
+      color: 'bg-orange-600',
     },
   ];
 

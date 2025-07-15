@@ -102,9 +102,9 @@ const ManageUsers = () => {
         />
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto ">
         <table className="min-w-full text-sm text-gray-700 bg-white rounded shadow border border-gray-200">
-          <thead className="bg-primary text-white text-xs sm:text-sm uppercase">
+          <thead className="bg-purple-500 text-white text-xs sm:text-sm uppercase">
             <tr>
               <th className="px-3 py-3 text-left">Username</th>
               <th className="px-3 py-3 text-left">Email</th>

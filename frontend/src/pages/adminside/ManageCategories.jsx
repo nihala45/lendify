@@ -140,7 +140,7 @@ const ManageCategories = () => {
 
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-200 text-sm bg-white rounded shadow">
-          <thead className="bg-primary text-white uppercase text-xs sm:text-sm">
+          <thead className="bg-purple-500 text-white uppercase text-xs sm:text-sm">
             <tr>
               <th className="px-4 py-3 text-left">Name</th>
               <th className="px-4 py-3 text-left">Description</th>

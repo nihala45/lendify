@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const ManageBooks = () => {
-  
   const [books, setBooks] = useState([]);
   const [count, setCount] = useState(0);
   const [nextPage, setNextPage] = useState(null);
@@ -99,10 +98,9 @@ const ManageBooks = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {books.length > 0 ? (
           books.map((book) => (
-            <Link
-              to={`/admin/bookdetail/${book.id}`}
+            <div
               key={book.id}
-              className="bg-white rounded shadow p-4 flex flex-col items-center hover:shadow-lg transition"
+              className="bg-white p-4 rounded shadow hover:shadow-lg transition"
             >
               {book.image_url ? (
                 <img
@@ -124,15 +122,7 @@ const ManageBooks = () => {
               <p className="text-sm text-gray-500 mb-3">
                 Genre: {book.category_name || "-"}
               </p>
-
               <div className="flex gap-2">
-                <Link
-                  to={`/admin/edit-book/${book.id}`}
-                  onClick={(e) => e.stopPropagation()}
-                  className="text-blue-600 hover:underline text-sm"
-                >
-                  Edit
-                </Link>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -143,7 +133,7 @@ const ManageBooks = () => {
                   Delete
                 </button>
               </div>
-            </Link>
+            </div>
           ))
         ) : (
           <p className="text-gray-500 col-span-full text-center">

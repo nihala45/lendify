@@ -12,7 +12,7 @@ import ManageCategories from './pages/adminside/ManageCategories';
 import AddBook from './pages/adminside/AddBook';
 import ManageBooks from './pages/adminside/ManageBooks'
 import UserBookList from './pages/userside/UserBookList';
-import UserBorrowPage from './pages/userside/UserBorrowPage';
+import BorrowBookDetails from './pages/userside/BorrowBookDetails';
 import AdminManageRequest from './pages/adminside/AdminManageRequest';
 import DetailBook from './pages/userside/DetailBook';
 const App = () => {
@@ -26,6 +26,8 @@ const App = () => {
        <Route path="/otp/:id" element={<OtpVerification />} />
        <Route path="/admin/login" element={<AdminLogin />} />
        <Route path="/user/book-list/" element={<UserBookList />} />
+       <Route path="/user/borrow-book-detail/" element={<BorrowBookDetails />} />
+
        <Route path="/user/book-detail/:id" element={<DetailBook />} />
        
 

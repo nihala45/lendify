@@ -73,7 +73,7 @@ const DetailBook = () => {
           status: 'return_requested',
         });
         setBorrowStatus(res.data.status);
-        Swal.fire('Requested', 'Return requested sent.', 'success');
+        Swal.fire('Requested', 'Return request sent.', 'success');
       } catch (err) {
         Swal.fire('Error', 'Failed to request return.', 'error');
       } finally {
@@ -146,19 +146,30 @@ const DetailBook = () => {
       <Navbar />
       <div className="container mx-auto px-4 py-12 flex justify-center">
         {book ? (
-          <div className="max-w-3xl w-full bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+          <div className="max-w-4xl w-full bg-white shadow-xl rounded-lg overflow-hidden flex flex-col md:flex-row">
             {book.image && (
-            
+              <div className="md:w-1/2">
                 <img
                   src={book.image}
                   alt={book.title}
-                  className="object-cover w-full h-full md:h-auto md:max-h-[500px]"
+                  className="object-cover w-full h-80 md:h-full"
                 />
-          
+              </div>
             )}
             <div className="p-8 md:w-1/2 flex flex-col justify-between">
               <div>
-                <h2 className="text-3xl font-bold text-purple-700 mb-4">{book.title}</h2>
+                <h2 className="text-3xl font-bold text-purple-700 mb-4">
+                  {book.title}
+                </h2>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-semibold">Author:</span> {book.author}
+                </p>
+                <p className="text-gray-600 mb-2">
+                  <span className="font-semibold">Times Read:</span> {book.times_read}
+                </p>
+                <p className="text-gray-600 mb-4">
+                  <span className="font-semibold">Available Copies:</span> {book.available_copies}
+                </p>
                 <p className="text-gray-700 mb-4">{book.description}</p>
               </div>
               <div className="mt-6">{renderButton()}</div>

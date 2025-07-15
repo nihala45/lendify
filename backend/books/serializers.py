@@ -16,14 +16,13 @@ class BookSerializer(serializers.ModelSerializer):
             return request.build_absolute_uri(obj.image.url)
         return None
     
-    
-
 class BorrowSerializer(serializers.ModelSerializer):
     user_email = serializers.EmailField(source='user.email', read_only=True)
     book_title = serializers.CharField(source='book.title', read_only=True)
     book_author = serializers.CharField(source='book.author', read_only=True)
     category = serializers.CharField(source='book.category.name', read_only=True)
     image = serializers.ImageField(source='book.image', read_only=True)
+    book_id = serializers.IntegerField(source='book.id', read_only=True)
 
     class Meta:
         model = Borrow
@@ -36,4 +35,5 @@ class BorrowSerializer(serializers.ModelSerializer):
             'image',
             'borrow_date',
             'status',
+            'book_id',
         ]

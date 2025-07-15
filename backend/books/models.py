@@ -5,20 +5,31 @@ from account.models import Users
 
 class Book(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    author = models.CharField(max_length=255)      
-    category = models.ForeignKey(BooksCategory, on_delete=models.SET_NULL, null=True, blank=True, related_name='books')
-    available_copies = models.PositiveIntegerField(default=1)
+    author = models.CharField(max_length=255)
+    category = models.ForeignKey(
+        BooksCategory,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='books'
+    )
     total_copies = models.PositiveIntegerField(default=1)
+    available_copies = models.PositiveIntegerField(default=1)
     times_read = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='book_images/', null=True, blank=True)
 
     def __str__(self):
         return self.title
 
-    @property 
+    @property
     def is_available(self):
         return self.available_copies > 0
+
+    def save(self, *args, **kwargs):
     
+        if self.pk is None:
+            self.available_copies = self.total_copies
+        super().save(*args, **kwargs)
    
     
 class Borrow(models.Model):

@@ -1,11 +1,9 @@
-// src/pages/AdminLogin.jsx
-
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import api from "../../api/api";
 import { AuthContext } from "../../context/AuthContext";
 
-const AdminLogin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,7 +30,7 @@ const AdminLogin = () => {
       });
 
       const data = res.data;
-      console.log(data, "Admin login data");
+      console.log(data, "user login data");
 
       login(data);
 
@@ -86,7 +84,7 @@ const AdminLogin = () => {
                 <span className="text-purple-700">Lendify</span>
               </h2>
               <p className="mt-2 text-sm text-gray-600">
-                Enter your admin credentials to continue.
+                Enter your credentials to continue.
               </p>
             </div>
 
@@ -114,7 +112,7 @@ const AdminLogin = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
-                    placeholder="admin@example.com"
+                    placeholder="abcd@example.com"
                   />
                 </div>
 
@@ -134,7 +132,7 @@ const AdminLogin = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-700 focus:border-purple-700 sm:text-sm"
-                    placeholder="Enter your admin password"
+                    placeholder="Enter your user password"
                   />
                 </div>
               </div>
@@ -145,8 +143,18 @@ const AdminLogin = () => {
                   disabled={loading}
                   className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-700 transition-colors duration-300"
                 >
-                  {loading ? "Logging in..." : "Admin Login"}
+                  {loading ? "Logging in..." : "User Login"}
                 </button>
+              </div>
+
+              <div className="text-center text-sm text-gray-600 mt-4">
+                Don&apos;t have an account?{" "}
+                <Link
+                  to="/register"
+                  className="text-purple-700 hover:underline"
+                >
+                  Register
+                </Link>
               </div>
             </form>
           </div>
@@ -156,4 +164,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Login;
